@@ -19,7 +19,7 @@ To install Vilp CLI, follow these steps:
 
 1. Clone the project:
 ```shell
-    git clone https://github.com/vilp/cliv.git
+    git clone https://github.com/filipe-varela/cliv.git --depth 1
     cd cliv
 ```
 
@@ -56,7 +56,7 @@ For more information on available commands and their usage, refer to the [docume
 
 ## Contributing
 
-Contributions to Vilp CLI are welcome! If you encounter any issues or have suggestions for improvements, please open an issue on the [GitHub repository](https://github.com/vilp/vilp-cli).
+Contributions to Vilp CLI are welcome! If you encounter any issues or have suggestions for improvements, please open an issue on the [GitHub repository](https://github.com/filipe-varela/cliv).
 
 ## License
 
