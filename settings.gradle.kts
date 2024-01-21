@@ -11,4 +11,4 @@ plugins {
 }
 
 rootProject.name = "cliv"
-include("app")
+include("cliv")
