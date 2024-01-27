@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+gradle build installDist > /dev/null && ./cliv/build/install/cliv/bin/cliv $@
