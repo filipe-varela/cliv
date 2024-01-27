@@ -32,9 +32,6 @@ dependencies {
 
     // This dependency is used by the application.
     implementation(libs.guava)
-
-    // Dependency from the custom git library
-    implementation(project(":cliv_git"))
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
