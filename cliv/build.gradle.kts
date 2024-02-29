@@ -21,6 +21,8 @@ repositories {
 dependencies {
     // Clikt for CLI functionailities if necessary
     implementation("com.github.ajalt.clikt:clikt:4.2.2")
+
+    implementation(project(":gitv"))
     
     // Use the Kotlin JUnit 5 integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
@@ -37,7 +39,7 @@ dependencies {
 // Apply a specific Java toolchain to ease working on different environments.
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(21))
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 
