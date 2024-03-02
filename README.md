@@ -60,4 +60,4 @@ Contributions to Vilp CLI are welcome! If you encounter any issues or have sugge
 
 ## License
 
-Vilp CLI is released under the [MIT License](https://opensource.org/licenses/MIT). See the [LICENSE](https://github.com/vilp/vilp-cli/blob/main/LICENSE) file for more details.
+Vilp CLI is released under the [Apache-2.0 License](https://opensource.org/license/apache-2-0). See the [LICENSE](COPYING) file for more details.
