@@ -6,8 +6,8 @@ import kotlin.io.path.*
 
 class GitRepository(path: String, force: Boolean = false) {
     val worktree = Path(path)
-    val gitDir = Path(path).resolve(".git")
-    val iniParser: INIParser = INIParser()
+    val gitDir: Path = Path(path).resolve(".git")
+    private val iniParser: INIParser = INIParser()
 
     init {
         if (!(force or gitDir.isDirectory())) {
@@ -32,7 +32,13 @@ class GitRepository(path: String, force: Boolean = false) {
     }
 }
 
-fun create(path: String): GitRepository {
+fun createDir(path: Path) {
+    if (!path.exists()) {
+        path.createDirectory()
+    }
+}
+
+fun createGitRepository(path: String): GitRepository {
     val repo = GitRepository(path, true)
 
     // First, we make sure the path either doesn't exist or is an empty dir
@@ -44,11 +50,12 @@ fun create(path: String): GitRepository {
     } else
         repo.worktree.createDirectory()
 
-    repo.gitDir.resolve("branches").createDirectory()
-    repo.gitDir.resolve("objects").createDirectory()
-    repo.gitDir.resolve("refs").createDirectory()
-    repo.gitDir.resolve("refs").resolve("tags").createDirectory()
-    repo.gitDir.resolve("refs").resolve("heads").createDirectory()
+    createDir(repo.gitDir)
+    createDir(repo.gitDir.resolve("branches"))
+    createDir(repo.gitDir.resolve("objects"))
+    createDir(repo.gitDir.resolve("refs"))
+    createDir(repo.gitDir.resolve("refs").resolve("tags"))
+    createDir(repo.gitDir.resolve("refs").resolve("heads"))
 
     with(File(repo.gitDir.resolve("description").toString())) {
         writeText(
@@ -64,7 +71,7 @@ fun create(path: String): GitRepository {
 
     with(File(repo.gitDir.resolve("config").toString())) {
         val config = INIParser()
-        config.addSection("config")
+        config.addSection("core")
         config["core"] = Pair("repositoryformatversion", "0")
         config["core"] = Pair("filemode", "false")
         config["core"] = Pair("bare", "false")

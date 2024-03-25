@@ -12,8 +12,14 @@ class INIParser {
                 lastSection = it.substring(1,it.length-1)
                 information[lastSection] = mutableMapOf()
             } else {
-                val k = it.split("=")[0].filter { c -> !c.isWhitespace() }
-                val v = it.split("=")[1].filter { c -> !c.isWhitespace() }
+                var k = ""
+                var v = ""
+                try {
+                    k = it.split("=")[0].filter { c -> !c.isWhitespace() }
+                    v = it.split("=")[1].filter { c -> !c.isWhitespace() }
+                } catch (e: IndexOutOfBoundsException) {
+                    println(it)
+                }
                 if (information.containsKey(lastSection)) information[lastSection]!![k] = v
                 else throw Exception("Config file isn't well formated.")
             }

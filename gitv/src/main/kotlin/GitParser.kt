@@ -7,7 +7,7 @@ fun processGitCommands(args: MutableList<String>) {
         return
     }
     when (args[0]) {
-        "init" -> println("git init")
+        "init" -> initCommand(args)
         "add" -> println("git add")
         "commit" -> println("git commit")
         "cat-file" -> println("git cat-file")
@@ -23,5 +23,15 @@ fun processGitCommands(args: MutableList<String>) {
         "status" -> println("git status")
         "tag" -> println("git tag")
         else -> println("No git command found!")
+    }
+}
+
+fun initCommand(args: MutableList<String>) {
+    if (args.size < 2) {
+        println("init help")
+    } else if (args[1].isEmpty() || args[1] == "-h" || args[1] == "--help") {
+        println("init help")
+    } else {
+        createGitRepository(args[1])
     }
 }
