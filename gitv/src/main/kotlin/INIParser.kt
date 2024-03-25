@@ -5,7 +5,19 @@ import java.io.File
 class INIParser {
     private val information: MutableMap<String, MutableMap<String, String>> = mutableMapOf()
     fun parse(path: String) {
-
+        val content = File(path).readLines()
+        var lastSection = ""
+        content.filter { it != "\n" }.forEach {
+            if (it.startsWith("[")) {
+                lastSection = it.substring(1,it.length-1)
+                information[lastSection] = mutableMapOf()
+            } else {
+                val k = it.split("=")[0].filter { c -> !c.isWhitespace() }
+                val v = it.split("=")[1].filter { c -> !c.isWhitespace() }
+                if (information.containsKey(lastSection)) information[lastSection]!![k] = v
+                else throw Exception("Config file isn't well formated.")
+            }
+        }
     }
 
     operator fun get(s: String): Map<String, String> {
