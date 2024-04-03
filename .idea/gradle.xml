@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/cliv" />
             <option value="$PROJECT_DIR$/gitv" />
+            <option value="$PROJECT_DIR$/vfile_graph" />
           </set>
         </option>
       </GradleProjectSettings>

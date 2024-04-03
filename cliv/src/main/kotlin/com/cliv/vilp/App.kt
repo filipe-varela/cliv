@@ -4,6 +4,7 @@
 package com.cliv.vilp
 
 import com.cliv_git.vilp.*
+import kotlin.io.path.Path
 
 fun Array<String>.parseArguments(): MutableList<String> {
     val arguments = this.toMutableList()
@@ -14,6 +15,7 @@ fun Array<String>.parseArguments(): MutableList<String> {
 }
 
 fun main(args: Array<String>) {
+    println(Path(".").resolve(".git"))
     val arguments = args.parseArguments()
     when (arguments[0]) {
         "git" -> processGitCommands(arguments)

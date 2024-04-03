@@ -4,6 +4,7 @@ import java.io.File
 import java.nio.file.Path
 import kotlin.io.path.*
 
+
 class GitRepository(path: String, force: Boolean = false) {
     val worktree = Path(path)
     val gitDir: Path = Path(path).resolve(".git")
